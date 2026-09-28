@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Saját szöveg";
+}
+<h1>@ViewData["Title"]</h1>
+<p>@Model.ToString()</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Score</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+                <tr>
+                <td><a asp-route-Id = "@customer.Id" asp-action="Vasarlo">@customer.Id</a></td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Phone</td>
+                    <td>@customer.Score</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+
