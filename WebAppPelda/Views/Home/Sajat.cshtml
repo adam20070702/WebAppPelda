@@ -12,16 +12,21 @@
             <td>Name</td>
             <td>Phone</td>
             <td>Score</td>
+			<td>Address</td>
+			<td>Email</td>
         </tr>
     </thead>
     <tbody>
         @foreach (var customer in Model)
         {
                 <tr>
-                <td><a asp-route-Id = "@customer.Id" asp-action="Vasarlo">@customer.Id</a></td>
+                    <td><a asp-route-Id = "@customer.Id" asp-action="Vasarlo">@customer.Id</a></td>
                     <td>@customer.Name</td>
                     <td>@customer.Phone</td>
                     <td>@customer.Score</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.Email</td>
+
                 </tr>
         }
     </tbody>
