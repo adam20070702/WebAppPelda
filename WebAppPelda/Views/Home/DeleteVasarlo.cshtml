@@ -1,0 +1,28 @@
+﻿@model WebAppPelda.Models.Customer
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2 class="mb-4">Vásárló törlése</h2>
+
+    @if (TempData["Success message"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success message"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+    <form asp-controller="Home" asp-action="DeleteVasarlo" method="post" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+            <label asp-for="Id" class="form-label">Id: :</label>
+            <input asp-for="Id" class="form-control" placeholder="1"/>
+        </div>
+
+     
+         
+		<button type="submit" class="btn btn-primary w-100" >Törlés</button>
+    </form>
+</div>

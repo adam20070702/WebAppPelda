@@ -77,18 +77,38 @@ namespace WebAppPelda.Controllers
             TempData["Success message"] = result;
             return RedirectToAction(nameof(CreateVasarlo));
         }
-
-        public IActionResult PutVasarlo()
+        public IActionResult PutVasarlo(int? id)
         {
-            Customer uresVasarlo2 = new Customer();
-            return View(uresVasarlo2);
+            Customer vasarlo = new Customer();
+            if (id.HasValue)
+            {
+                vasarlo = new VasarloService().GetById(id.Value);
+            }
+            return View(vasarlo);
         }
         [HttpPost]
         public IActionResult PutVasarlo(Customer customer)
         {
-            string result = new VasarloService().PutCustomer(customer);
-            TempData["Success message"] = result;
-            return RedirectToAction(nameof(PutVasarlo));
+            string result2 = new VasarloService().PutCustomer(customer);
+            TempData["Success message"] = result2;
+            return RedirectToAction(nameof(PutVasarlo), new { id = customer.Id });
+        }
+
+        public IActionResult DeleteVasarlo(int? id)
+        {
+            Customer vasarlo = new Customer();
+            if (id.HasValue)
+            {
+                vasarlo = new VasarloService().GetById(id.Value);
+            }
+            return View(vasarlo);
+        }
+        [HttpPost]
+        public IActionResult DeleteVasarlo(Customer customer)
+        {
+            string result2 = new VasarloService().DeleteCustomer(customer.Id);
+            TempData["Success message"] = result2;
+            return RedirectToAction(nameof(DeleteVasarlo), new { id = customer.Id });
         }
 
     }
